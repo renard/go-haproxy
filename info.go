@@ -7,6 +7,9 @@ import (
 )
 
 // Response from HAProxy "show info" command.
+//
+// See HAProxy source code src/stats.c check for stat_cols_info variable
+// definition.
 type Info struct {
 	Name                       string `kv:"Name"`
 	Version                    string `kv:"Version"`
@@ -71,6 +74,20 @@ type Info struct {
 	TotalBytesOut              uint64 `kv:"TotalBytesOut"`
 	BytesOutRate               uint64 `kv:"BytesOutRate"`
 	DebugCommandsIssued        uint64 `kv:"DebugCommandsIssued"`
+	CumRecvLogs                uint64 `kv:"CumRecvLogs"`
+	BuildInfo                  string `kv:"Build info"`
+	MemmaxBytes                uint64 `kv:"Memmax_bytes"`
+	PoolAllocBytes             uint64 `kv:"PoolAlloc_bytes"`
+	PoolUsedBytes              uint64 `kv:"PoolUsed_bytes"`
+	StartTimeSec               uint64 `kv:"Start_time_sec"`
+	Tainted                    uint64 `kv:"Tainted"`
+	TotalWarnings              uint64 `kv:"TotalWarnings"`
+	MaxconnReached             uint64 `kv:"MaxconnReached"`
+	BootTimeMs                 uint64 `kv:"BootTime_ms"`
+	NicedTasks                 uint64 `kv:"Niced_tasks"`
+	CurrStreams                uint64 `kv:"CurrStreams"`
+	CumStreams                 uint64 `kv:"CumStreams"`
+	BlockedTrafficWarnings     uint64 `kv:"BlockedTrafficWarnings"`
 }
 
 // Equivalent to HAProxy "show info" command.
